@@ -12,10 +12,33 @@
       <div class="card center">
         <h1>{{title}}: {{counter}}</h1>
         <div>
-          <button class="btn primary">+</button>
-          <button class="btn danger">-</button>
+          <button class="btn primary" v-on:click="counter++">+</button>
+          <button class="btn danger" v-on:click="counter--">-</button>
         </div>
       </div>
+      <hr>
+    </div>
+    <div class="container" id="app2">
+      <div class="card">
+        <h2>{{title}}</h2>
+        <div class="form-control">
+          <input type="text" 
+          v-bind:placeholder="placeholderStr" 
+          v-bind:value="inputValue"
+          v-on:input="inputChange"
+          />
+        </div>
+        <button class="btn">add</button>
+        <hr>
+        <h3>{{inputValue}}</h3>
+        <hr>
+        <ul class="list">
+          <li class="list-item">
+            {{notes[0]}}
+          </li>
+        </ul>
+      </div>
+      
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
