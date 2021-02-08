@@ -22,9 +22,20 @@ const App2 = {
         }
     },
     methods:{
-        inputChange(){
+        inputChange(event){
             this.inputValue = event.target.value
-            console.log(event.target.value)
+        },
+        addNewNote(){
+            this.notes.push(this.inputValue)
+            this.inputValue = ''
+        },
+        inputKeyPress(event){
+            if(event.key === 'Enter'){
+                this.addNewNote()
+            }
+        },
+        delNote(id){
+            this.notes.splice(id,1)
         }
     }
 }

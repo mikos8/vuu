@@ -18,6 +18,7 @@
       </div>
       <hr>
     </div>
+
     <div class="container" id="app2">
       <div class="card">
         <h2>{{title}}</h2>
@@ -26,15 +27,17 @@
           v-bind:placeholder="placeholderStr" 
           v-bind:value="inputValue"
           v-on:input="inputChange"
+          v-on:keypress="inputKeyPress"
           />
         </div>
-        <button class="btn">add</button>
+        <button class="btn" v-on:click="addNewNote">add</button>
         <hr>
-        <h3>{{inputValue}}</h3>
+        <h3></h3>
         <hr>
         <ul class="list">
-          <li class="list-item" v-for="">
-            {{notes[0]}}
+          <li class="list-item" v-for="(note, id) in notes">
+            <b>{{note}}</b>
+            <button class="btn danger" v-on:click="delNote(id)">remove</button>
           </li>
         </ul>
       </div>
