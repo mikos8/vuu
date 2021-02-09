@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Basics</title>
     <link rel="stylesheet" href="theme.css" />
-    
   </head>
   <body>
     <div class="container" id="app">
@@ -16,32 +15,36 @@
           <button class="btn danger" v-on:click="counter--">-</button>
         </div>
       </div>
-      <hr>
+      <hr />
     </div>
 
     <div class="container" id="app2">
       <div class="card">
         <h2>{{title}}</h2>
         <div class="form-control">
-          <input type="text" 
-          v-bind:placeholder="placeholderStr" 
-          v-bind:value="inputValue"
-          v-on:input="inputChange"
-          v-on:keypress="inputKeyPress"
+          <input
+            type="text"
+            v-bind:placeholder="placeholderStr"
+            v-bind:value="inputValue"
+            v-on:input="inputChange"
+            v-on:keypress="inputKeyPress"
           />
         </div>
         <button class="btn" v-on:click="addNewNote">add</button>
-        <hr>
+        <hr />
         <h3></h3>
-        <hr>
-        <ul class="list">
+
+        <ul class="list" v-if="notes.length !== 0">
           <li class="list-item" v-for="(note, id) in notes">
-            <b>{{note}}</b>
+            <b>{{toUpperCase(note)}}</b>
             <button class="btn danger" v-on:click="delNote(id)">remove</button>
           </li>
+          <hr />
         </ul>
+        <div v-if="notes.length === 0">
+          <p class="grey">Заметок нет. Добавьте 1ю заметку</p>
+        </div>
       </div>
-      
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
