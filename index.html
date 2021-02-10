@@ -20,33 +20,47 @@
 
     <div class="container" id="app2">
       <div class="card">
-        <h2>{{title}}</h2>
+        <h2
+          v-bind:style="{color: changeColor(),
+          fontSize:fontSizeChange()
+        }"
+        >
+          {{title}}
+        </h2>
         <div class="form-control">
           <input
             type="text"
             v-bind:placeholder="placeholderStr"
-            v-bind:value="inputValue"
-            v-on:input="inputChange"
+            v-model="inputValue"
             v-on:keypress="inputKeyPress"
-          />
+          /><!-- v-bind:value="inputValue"
+            v-on:input="inputChange"-->
         </div>
+
         <button class="btn" v-on:click="addNewNote">add</button>
         <hr />
         <h3></h3>
 
         <ul class="list" v-if="notes.length !== 0">
           <li class="list-item" v-for="(note, id) in notes">
-            <b>{{toUpperCase(note)}}</b>
+            <span :class="note.length > 4 ? 'primary' : 'bold' "
+              >{{toUpperCase(note)}}</span
+            >
             <button class="btn danger" v-on:click="delNote(id)">remove</button>
           </li>
           <hr />
+          <li>
+            всего заметок:{{notes.length}}
+            <p class="grey">удвоенное значение {{doubleCountComputed}}</p>
+          </li>
         </ul>
         <div v-if="notes.length === 0">
           <p class="grey">Заметок нет. Добавьте 1ю заметку</p>
+          <br />
         </div>
       </div>
     </div>
-
+      выфв
     <script src="https://unpkg.com/vue@next"></script>
     <script src="main.js"></script>
   </body>
