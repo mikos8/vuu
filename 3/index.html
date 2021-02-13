@@ -26,22 +26,23 @@
         <br />
         <button class="btn" v-on:click="changeTitle()">enter</button>
       </div>
+      <div class="card center"></div>
       <div class="card center">
-        
-      </div>
-      <div class="card center">
-        <div class="form-control"><input type="text" v-on:keyup.enter="addItem" ref="myInput"></div>
+        <div class="form-control">
+          <input type="text" v-on:keyup.enter="addItem" ref="myInput" />
+        </div>
         <ul class="list">
           <ul
             class="list-item"
             v-for="(item,i) in items"
             v-on:click="items.splice(i,1 )"
-            :key='item'>
+            :key="item"
+          >
             {{item}} &nbsp;
-            <input type="text" v-on:click="stopPropagation">
+            <input type="text" v-on:click="stopPropagation" />
           </ul>
         </ul>
-        <h3 v-show="items.length === 0 "> no items</h3>
+        <h3 v-show="items.length === 0 ">no items</h3>
       </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>

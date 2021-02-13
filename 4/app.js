@@ -1,42 +1,44 @@
+const h = Vue.h; //global method
+
 Vue.createApp({
   data() {
     return {
-      myHtml: "<h1>this is HTML code</h1><hr>",
-      title: "Google Title",
-      personFamily: {
-        country: "Canada",
-        city: "Toronto",
-        Who: "My Family",
-        Action: "Live Here",
-      },
-      items: [
-        1,
-        2,
-        3,
-        4,
-        5,6,7,8,9,10
-      ],
+      title: "Template",
     };
   },
   methods: {
     changeTitle() {
-      if (this.title == "Google Title") {
-        this.title = "Yandex";
+      if (this.title === "Template") {
+        this.title = "Changed this title";
       } else {
-        this.title = "Google Title";
+        this.title = "Template";
       }
     },
-    stopPropagation(event){
-      event.stopPropagation()
-    },
-    addItem(){
-      console.log(this.$refs.myInput.value);
-      
-    }
   },
-  computed:{
-    eventItems(){
-      return this.items.filter(i => i%2 === 0)
-    }
-  }
+  computed: {},
+  //   template: `
+  //     <div class="card center">
+  //       <h1>{{title}}</h1>
+  //       <button class="btn" @click="title='titleChahge'">edit</button>
+  //     </div>
+  // `,
+  render() {
+    return h(
+      "div",
+      {
+        class: "card center",
+      },
+      [
+        h("h1", {}, this.title),
+        h(
+          "button",
+          {
+            class: "btn",
+            onClick: this.changeTitle,
+          },
+          "change",
+        ),
+      ],
+    );
+  },
 }).mount("#app");
