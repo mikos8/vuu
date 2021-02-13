@@ -10,11 +10,7 @@ Vue.createApp({
         Action: "Live Here",
       },
       items: [
-        1,
-        2,
-        3,
-        4,
-        5,6,7,8,9,10
+        1
       ],
     };
   },
@@ -30,8 +26,10 @@ Vue.createApp({
       event.stopPropagation()
     },
     addItem(){
+      this.items.unshift(this.$refs.myInput.value);
+      this.$refs.myInput.value = ''
       console.log(this.$refs.myInput.value);
-      
+
     }
   },
   computed:{
